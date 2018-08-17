@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset='utf-8'>
+  <link href="ohjetyyli.css" rel="stylesheet" type="text/css" />
+  <title>Labyrinttipeli</title>
+ </head>
+
+ <body>
+<h4>Muutoshistoria</h4>
+<ul>
+  <li>6.3.2013 Muutettu tietokoneen tekoälystä tapaus, 
+  jossa tietokone on samassa ruudussa kuin haluttu tavara. Tässä tapauksessa tietokone poimii tavaran.
+  Lisäksi poistettu viittaukset palojen pyörittämiseen, jota ei harkkatyössä toteuteta.</li>
+  <li> 28.3.2013 Muutettu osa vaatimuksista vapaaehtoisiksi. Lisää kohdassa <a href="#vapaaehtoiset">Työn vapaaehtoiset osat</a></li>
+</ul>
+
+<p>
+Muutettu
+$Date: 2017-11-05 17:30:00 +0200 (Sun, 05 Nov 2017) $
+($Revision: 2823 $).
+</p>
+
+
+<h1>Labyrinttipeli</h1>
+
+ <h2>Sisällysluettelo</h2>
+
+  <ol class="toc">
+   <li>
+    <a href="#esittely">Esittely</a>
+
+    <ol class="toc">
+     <li>
+      <a href="#esittely-kaynnistaminen">Pelin käynnistäminen</a>
+     </li>
+    </ol>
+   </li>
+
+   <li>
+    <a href="#valmiskoodi">Valmiina annettu koodi</a>
+
+    <ol class="toc">
+     <li>
+      <a href="#valmiskoodi-dokumentaatio">Valmiina annetun koodin dokumentaatio</a>
+     </li>
+
+<!--     <li  class="numeroitu">
+      <a href="#valmiskoodi-tyyppialiakset">Rajapinnoissa käytetyt tyyppialiakset</a>
+     </li>-->
+
+     <li>
+      <a href="#valmiskoodi-pelirajapinta">Rajapinta oman pelin toteutettavaksi</a>
+     </li>
+
+     <li>
+      <a href="#valmiskoodi-luoPeli">Uuden pelin luominen</a>
+     </li>
+
+     <li>
+      <a href="#valmiskoodi-nayttorajapinta">Näytölle tulostaminen</a>
+     </li>
+
+     <li>
+      <a href="#valmiskoodi-koordinaatti">Koordinaatit</a>
+     </li>
+
+     <li>
+      <a href="#valmiskoodi-virheilmoitukset">Virheistä ilmoittaminen</a>
+     </li>
+
+     <li>
+      <a href="#valmiskoodi-poikkeushierarkia">Poikkeushierarkian kantaluokat</a>
+     </li>
+
+     <li>
+      <a href="#valmiskoodi-assert">Esiehtojen ja muiden pysyväisväittämien tarkistaminen</a>
+     </li>
+    </ol>
+   </li>
+
+   <li>
+    <a href="#peli">Pelin käsitteet</a>
+
+    <ol class="toc">
+     <li>
+      <a href="#peli-pelaaja">Pelaaja</a>
+     </li>
+
+     <li>
+      <a href="#peli-esineet">Esineet</a>
+     </li>
+
+     
+
+     <li>
+      <a href="#peli-labyrintti">Labyrintti</a>
+     </li>
+
+     <li>
+      <a href="#peli-ruudut">Ruudut</a>
+     </li>
+
+     <li>
+      <a href="#peli-tyontopala">Työntöpala</a>
+     </li>
+	
+	<li>
+      <a href="#peli-erikoispalat">Erikoispalat</a>
+     </li>
+	 
+     <li>
+      <a href="#peli-liikkuminen">Liikkuminen</a>
+     </li>
+
+    </ol>
+   </li>
+
+   <li>
+    <a href="#kulku">Pelin kulku</a>
+
+    <ol class="toc">
+     <li>
+      <a href="#alustustiedosto">Alustustiedosto</a>
+     </li>
+
+     <li>
+      <a href="#alustus">Pelin alustus</a>
+     </li>
+
+     <li>
+      <a href="#vuorot">Vuorot</a>
+     </li>
+
+     <li>
+      <a href="#vuoron-aluksi">Vuoron aluksi</a>
+     </li>
+
+     <li>
+      <a href="#vuoron-toiminnot">Vuoron toiminnot</a>
+	<ol class="toc">
+	  <li>
+	    <a href="#ihmispelaaja">Ihmispelaaja</a>
+	  </li>
+	  <li>
+	    <a href="#tietokonepelaaja">Tietokonepelaaja</a>
+	  </li>
+	</ol>
+     </li>
+
+     <li>
+      <a href="#esineiden-keraaminen">Esineiden kerääminen</a>
+     </li>
+
+     <li>
+      <a href="#vuoron-lopuksi">Vuoron lopuksi</a>
+     </li>
+    </ol>
+   </li>
+
+   <li>
+    <a href="#komennot">Komennot</a>
+
+    <ol class="toc">
+     <li>
+      <a href="#tyonna">työnnä</a>
+     </li>
+
+     <li>
+      <a href="#liiku">liiku</a>
+     </li>
+
+     <li>
+      <a href="#paikallaan">paikallaan</a>
+     </li>
+
+     <li>
+      <a href="#lopeta">lopeta</a>
+     </li>
+    </ol>
+   </li>
+
+   <li>
+	<a href="#vapaaehtoiset">Työn vapaaehtoiset osat</a>
+	</li>
+   <li>
+    <a href="#debug">Debug-toiminto</a>
+   </li>
+
+   <li>
+	<a href="#debug_naytto">Ohjelman tilan tulostus</a>
+</li>
+   <li>
+    <a href="#esimerkkiajo">Esimerkkiajo</a>
+   </li>
+  </ol>
+ 
+ <h2 id="esittely" class="numeroitu">
+  Esittely
+ </h2>
+ 
+  <p>
+   Tässä dokumentissa määritellään harjoitustyönä tehtävältä ohjelmalta
+   vaadittu toiminnallisuus.
+   Aivan kaikkea alla olevissa ohjeissa käsiteltyä ei tarvitse toteuttaa
+   itse, vaan osa annetaan valmiina.
+  </p>
+ 
+  <p>
+   Labyrinttipeli on 1-4 pelaajan erityisen viihdyttävä ja nautinnollinen
+   lautapeli. Osa pelaajista (tai kaikki) voivat olla myös
+   tietokonepelaajia.
+    Jokaisen pelaajan tavoitteena on
+    kerätä labyrintista omat esineensä. Se joka onnistuu tässä
+    ensimmäisenä voittaa pelin.
+  </p>
+ 
+  <p>
+  Pelissä pelaajat yrittävät kerätä labyrintistä pelaajalle määrätyt
+  esineet. Vuorollaan pelaajat muuttavat labyrinttiä
+  <a href="#tyonna">työntämällä</a>
+  vapaana olevan työntöpalan pelilaudalle ja lisäksi
+  <a href="#liiku">liikuttavat</a>
+  omaa pelinappulaansa. Tietokonepelaajien tekoäly ei riitä labyrintin
+  muuttamiseen, mutta tietokonepelaajatkin
+  <a href="#tietokonepelaaja">liikuttavat</a> nappuloitaan
+  yrittäen kerätä esineitään.
+  </p>
+ 
+  <p>
+   Yleiset kysymykset harjoitustyöohjeesta lähetetään kurssin
+   moodleen jotta muutkin pääsevät hyötymään kysymyksistä ja vastauksista.
+   Omaan harjoitustyöhön liittyvät kysymykset lähetetään suoraan opettajalle.
+   </p>
+ 
+  <h3 id="esittely-kaynnistaminen" class="numeroitu">
+   Pelin käynnistäminen
+  </h3>
+ 
+   <p>
+    Ohjelmalle annetaan komentorivillä alustustiedoston nimi ja
+    mahdolliset debug-vivut.
+   </p>
+
+   <div id="muotosaanto-kaynnistaminen" class="objekti muotosaanto"
+     title="Ohjelman käynnistäminen.">
+    <samp class="syote">labyrintti <span class="valinnainen">-d</span> <dfn>tiedosto</dfn>
+    </samp>
+
+    <dl>
+     <dt>
+      -d
+     </dt>
+     <dd>
+      Käynnistää ohjelman <a href="#debug">debug-tilassa</a>.
+     </dd>
+	 
+	 <dt>
+		-n
+	</dt>
+	<dd>
+		Käynnistää ohjelman tilassa, jossa näyttö-luokka <a href="#debug_naytto">tulostaa pelin tilaa</a>.
+	</dd>
+     <dt>
+      <var>tiedosto</var>
+     </dt>
+     <dd>
+      Lukee ohjelman alustuksen annetusta tiedostosta.
+     </dd>
+    </dl>
+   </div>
+
+   <div id="esimerkki-kaynnistaminen" class="objekti esimerkki"
+     title="Ohjelman käynnistäminen.">
+    <samp>laby$ <kbd>./labyrintti alustus.txt</kbd></samp>
+   </div>
+
+   <div id="esimerkki-debug-kaynnistaminen" class="objekti esimerkki"
+     title="Ohjelman käynnistäminen debug-tilassa.">
+    <samp>laby$ <kbd>./labyrintti -d debug-alustus.txt</kbd></samp>
+   </div>
+
+ <h2 id="valmiskoodi" class="numeroitu">
+  Valmiina annettu koodi
+ </h2>
+
+  <p>
+   Valmiina annettavan sovelluskehyksen rajapintojen esittelyt löytyvät
+   gitlabista hakemistosta <span class="tiedostonimi">julkinen</span>.
+   Valmiin koodin kääntäminen onnistuu käyttämällä tiedostoa Makefilean>.
+  </p>
+
+  <p>
+   Alla on rakennekaavio, joka selventää sitä, miten harjoitustyön eri
+   osat suhtautuvat toisiinsa.
+  </p>
+
+  <p>
+   <img title="Harjoitustyön rakennekaavio"
+     src="tyoohje-rakennekaavio.png" alt="Rakennekaavio" />
+  </p>
+
+
+  <h3 id="valmiskoodi-dokumentaatio" class="numeroitu">
+   Valmiina annetun koodin dokumentaatio
+  </h3>
+
+   <p>
+    <a href="dokumentaatio/html/index.html">Julkisen koodin rajapintadokumentaation</a>
+    voi tuottaa myös Doxygen työkalulla omalla koneellaan, jos
+    harjoitustyötä tekee omalla koneellaan koulun palvelinten sijasta.
+    Dokumentaatio tuotetaan <kbd>doxygen</kbd>-komennolla
+    <span class="tiedostonimi">julkinen</span>-hakemistossa.
+    Komento tuottaa samaan hakemistoon
+    HTML-muotoisen dokumentaation
+    <span class="tiedostonimi">dokumentaatio</span>-hakemistoon.
+   </p>
+
+   <p>
+    Dokumentaatiosta selviävät rajapintojen tarjoamat ja vaatimat
+    poikkeustakuut sekä esi- ja jälkiehdot.
+   </p>
+
+<!--  <h3 id="valmiskoodi-tyyppialiakset" class="numeroitu">
+   Rajapinnoissa käytetyt tyyppialiakset
+  </h3>
+
+   <p>
+    Moropolin rapapinnat, on määritelty tyyppialiasten, eikä konkreettisten
+    tyyppien avulla.
+    Kullekin tyyppialiakselle on määritelty, millainen rajapinta kyseisen
+    aliaksen toteuttavalle oikealle tietotyypille taataan.
+    Tyyppialiakset määritellään tiedostossa
+    <a href="dokumentaatio/html/yhteiset_8hh.html"><span class="filename">julkinen/yhteiset.hh</span></a>.
+    Jotta oma koodi toimii varmasti oikein jopa siinä tapauksessa, että
+    rajapinnan tietotyyppejä vaihdettaisiin, kannattaa näitä tietotyyppejä
+    käyttää myös omassa koodissa ja käyttää vain niille luvattua
+    rajapintaa.
+   </p>-->
+
+  <h3 id="valmiskoodi-pelirajapinta" class="numeroitu">
+   Rajapinta oman pelin toteutettavaksi
+  </h3>
+
+   <p>
+    Harjoitustyössä toteutettavan osan pitää toteuttaa annettu
+    <a href="dokumentaatio/html/class_julkinen_1_1_pelirajapinta.html">Pelirajapinta</a>,
+    Komentoriviparametrien käsittely, alustustiedoston lukeminen ja sen
+    tietojen välittäminen pelille ja pelin pyörittäminen on valmiina
+    annettavan pääohjelman vastuulla.
+    Pelirajapinnan esittely on tiedostossa
+    <a href="dokumentaatio/html/pelirajapinta_8hh.html"><span class="tiedostonimi">julkinen/pelirajapinta.hh</span></a>.
+   </p>
+
+   <p>
+    Käytännössä tämä tarkoittaa, että harjoitustyössä periytetään
+    Pelirajapinnasta oma luokka, joka toteuttaa Pelirajapinnan
+    virtuaalifunktiot.
+    Ohjelman pääohjelma tulee valmiina, ja se käyttää pelioliota tuon
+    rajapinnan kautta.
+   </p>
+
+  <h3 id="valmiskoodi-luoPeli" class="numeroitu">
+   Uuden pelin luominen
+  </h3>
+
+   <p>
+    Tiedostossa
+    <a href="dokumentaatio/html/pelitehdas_8hh.html"><span class="tiedostonimi">julkinen/pelitehdas.hh</span></a>
+    esitellään funktio <code>luoPeli()</code>, joka harjoitustyön koodin
+    pitää toteuttaa.
+    Tämän funktion tulee luoda new'llä Pelirajapinnan toteuttava peliolio
+    ja palauttaa se kutsujalle.
+    Harjoitustyön valmiina annettava pääohjelma luo peliolion ohjelman
+    alussa kutsumalla tätä funktiota, ja tuhoaa sen ohjelman lopussa
+    deletellä.
+   </p>
+
+  <h3 id="valmiskoodi-nayttorajapinta" class="numeroitu">
+   Näytölle tulostaminen
+  </h3>
+
+   <p>
+    <a href="dokumentaatio/html/class_julkinen_1_1_nayttorajapinta.html">Nayttorajapinta-rajapinnan</a>
+    toteuttava valmis luokka huolehtii kaikesta peliin liittyvästä
+    tulostelusta ja pääohjelma syötteiden kyselystä.
+    Nayttorajapinta-luokan esittely löytyy tiedostosta
+    <a href="dokumentaatio/html/nayttorajapinta_8hh.html"><span class="tiedostonimi">julkinen/nayttorajapinta.hh</span></a>.
+    Osoitin näyttöolioon annetaan pelille Pelirajapinnan kautta ohjelman
+    alussa pelin alustamisen aikana.
+   </p>
+
+   <p>
+    Tiedostosta
+    <a href="dokumentaatio/html/debug_8hh.html"><span class="tiedostonimi">julkinen/debug.hh</span></a>
+    löytyy makro DEBUG_OUTPUT().
+    Sen avulla voi halutessaan tehdä mielivaltaisia
+    debug-tulostuksia, jotka näkyvät ruudulla, jos ohjelma on
+    käynnistetty debug-tilassa.
+   </p>
+
+   <div class="objekti esimerkki"
+     title="DEBUG_OUTPUT-makron käyttö.">
+    <samp class="koodi">DEBUG_OUTPUT("Kääk" &lt;&lt; std::endl);</samp>
+   </div>
+
+   <p>
+    Makrolla tehdyt tulostukset näkyvät ruudulla vain jos debug-vipu on
+    annettu ohjelmalle sitä käynnistäessä, joten tulostuksia ei tarvitse
+    suojata ehtolauseilla.
+   </p>
+
+  <h3 id="valmiskoodi-koordinaatti" class="numeroitu">
+   Koordinaatit
+  </h3>
+
+   <p>
+    Kaiken pelin koordinaattien käsittelyn hoitaa
+    <a href="dokumentaatio/html/class_julkinen_1_1_koordinaatti.html">Koordinaatti</a>-luokka,
+    jonka esittely löytyy tiedostosta
+    <a href="dokumentaatio/html/koordinaatti_8hh.html"><span class="tiedostonimi">julkinen/koordinaatti.hh</span></a>.
+    Tietueella ja sen yhteydessä määritellyillä operaattoreilla saadaan tehtyä
+    kaikki koordinaattiin liittyvä toiminta.
+    Tätä luokkaa on pakko käyttää omassa toteutuksessaan. 
+   </p>
+
+  <h3 id="valmiskoodi-virheilmoitukset" class="numeroitu">
+   Virheistä ilmoittaminen
+  </h3>
+
+   <p>
+   Näyttörajapinta ei sisällä mitään operaatioita virheilmoitusten
+   tulostamiseen, vaan harjoitustyön koodi raportoi kaikista virheistä
+   heittämällä Pelirajapinnasta ulos poikkeuksen. Tätä varten on olemassa
+   valmiin poikkeushierarkian tynkä, josta voi periyttää omia poikkeuksiaan.
+   Heitettyjen poikkeusten sisältämän virhetekstin voi jokainen ryhmä
+   määritellä itse, kunhan se kuvaa syntynyttä virhetilannetta. Itsemääritelty
+   virheteksti ei saa sisältää ääkkösiä merkkienkoodauksien vuoksi, joten ä ja ö merkit
+   on korvattava a ja o merkeillä.
+   </p>
+   
+   <p>
+   Huomaa, että Pelirajapinnan operaatiot vaativat tietyt poikkeustakuut,
+   mikä asettaa vaatimuksia sen suhteen, missä tilassa pelin tulee olla
+   poikkeuksen heittämisen jälkeen.
+   </p>
+
+  <h3 id="valmiskoodi-poikkeushierarkia" class="numeroitu">
+   Poikkeushierarkian kantaluokat
+  </h3>
+
+   <p>
+    Valmiina annetaan myös
+    <a href="dokumentaatio/html/class_julkinen_1_1_virhe.html">käytettävän poikkeushierarkian yläosa</a>.
+    Näistä saa itse periyttää omia poikkeusluokkia, ja rajapinnat
+    määrittelevät, millaisia poikkeuksia voi funktioista vuotaa
+    ulos. Lisäksi rajapinnat määrittelevät tarjottavat poikkeustakuut
+    poikkeustilanteen sattuessa.
+   </p>
+
+   <p>
+    Määriteltyjen poikkeuksien lisäksi sallitaan kuitenkin aina
+    std::bad_alloc-poikkeuksen vuotaminen ulos, jos muisti
+    loppuu. Tällöin keskeytyneen operaation ei tarvitse välttämättä antaa
+    minkäänlaista poikkeustakuuta (perus- tai minimitakuun tarjoaminen on kuitenkin aina
+    plussaa). Jos operaatiolta kuitenkin vaaditaan no-throw -takuu, ei
+    muistikaan saa loppua operaation aikana.
+    Käytännössä kaikki tämä tarkoittaa sitä, että muistin loppumiseen ei
+    välttämättä tarvitse erikseen varautua.
+   </p>
+
+  <h3 id="valmiskoodi-assert" class="numeroitu">
+   Esiehtojen ja muiden pysyväisväittämien tarkistaminen
+  </h3>
+
+   <p>
+    Pelirajapinnassa määrätyt esiehdot tulee tarkastaa, ja siihen käytetään
+    makroa <code>ESIEHTO()</code>, jonka käyttö on pakollista
+    harjoitustyössä.
+    Mikäli makrolle parametrina annettu esiehto on voimassa (true), jatketaan
+    ohjelman suoritusta normaalisti. Muussa tapauksessa makro käyttäytyy
+    määrittelemättömällä tavalla (se saattaa esimerkiksi
+    keskeyttää ohjelman suorittamisen virheilmoitukseen,
+    heittää poikkeuksen tms.). Joka tapauksessa ohjelman suorituksen
+    jatkumisesta ei tarvitse välittää, jos jokin esiehto ei ole voimassa.
+   </p>
+
+   <p>
+    Valmis koodi tarjoaa myös makrot <code>JALKIEHTO()</code> ja
+    <code>INVARIANTTI()</code>, joita voi (ja kannattaa) käyttää
+    jälkiehtojen ja luokkainvarianttien tarkastamiseen. Normaalia
+    C++:n <code>assert()</code>-makroa voi tietysti myös käyttää
+    muuallakin ohjelman järjellisyyden tarkastamiseen.
+   </p>
+   
+   <p>
+   Esi- ja jälkiehtoja sekä invariantteja pitää tietysti käyttää myös
+   itse suunnitelluissa luokissa. Sopimussuunnittelun käyttö on osana
+   harjoitustyön arvostelua.
+   </p>
+
+   <p>
+    Kaikki mainitut makrot määritellään tiedostosssa
+    <a href="dokumentaatio/html/vaittama_8hh.html"><span class="tiedostonimi">julkinen/vaittama.hh</span></a>.
+   </p>
+
+ <h2 id="peli" class="numeroitu">
+  Pelin käsitteet
+ </h2>
+
+  <h3 id="peli-pelaaja" class="numeroitu">
+   Pelaaja
+  </h3>
+
+    <p>
+    Pelaaja on joko ihmispelaaja tai tietokonepelaaja. Pelaajia pelissä on
+    1-4, ja niistä mielivaltainen määrä on tietokonepelaajia. Pelaajien
+    määrät, nimet ja tyypit kerrotaan alustustiedostossa.
+    </p>
+    
+    <p>
+    Pääohjelma huolehtii ihmispelaajien komentojen kysymisestä käyttäjiltä ja
+    niiden välittämisestä Pelirajapinnan kautta varsinaiselle pelille.
+    Tietokonepelaajien tapauksessa pääohjelma suoraan käskee peliä liikuttamaan
+    tietokonepelaajaa tekoälyn mukaisesti.
+    </p>
+
+  <h3 id="peli-esineet" class="numeroitu">
+   Esineet
+  </h3>
+
+    <p>
+    Labyrintissä on esineitä, joita pelaajat keräävät. Esineet merkitään pienillä
+    kirjaimilla a:sta alkaen, ja kullakin pelaajalla on lista esineistä, joita
+    pelaajan tulee kerätä järjestyksessä. Pelaaja, joka ensimmäisenä saa kerättyä
+    kaikki esineensä, on voittaja.
+    </p>
+
+  
+  <h3 id="peli-labyrintti" class="numeroitu">
+   Labyrintti
+  </h3>
+
+    <p>
+    Labyrintti on suorakaiteen muotoinen. Sen koon määrää pääohjelma
+    Pelirajapinnan kautta. Labyrintin vasemman ylänurkan
+    koordinaatti on (1,1), x-koordinaatti kasvaa oikealle ja y-koordinaatti
+    alaspäin.
+    </p>
+
+  <h3 id="peli-ruudut" class="numeroitu">
+   Ruudut
+  </h3>
+  
+    <p>
+    Labyrintti koostuu ruuduista. Ruutuja on kolmenlaisia ja jokaisella
+    ruudulla on neljä erilaista rotaatiota. Ruudut esitetään tekstuaalisesti
+    4x4-kokoisella alueella siten, että nurkat merkitään +-merkillä (plus).
+    Seinät merkitään joko -- tai |-merkeillä (miinus ja pystyviiva),
+    riippuen siitä onko kyseessä vaaka- vai pystyseinä. Ruudun sisällä olevat
+    tyhjät osat täytetään .-merkeillä (piste).
+    Eri ruudut numeroituine rotaatioineen ovat
+    </p>
+    <table border="1">
+    <tr>
+    <th>Ruutu</th>
+    <th>Rotaatio 1</th>
+    <th>Rotaatio 2</th>
+    <th>Rotaatio 3</th>
+    <th>Rotaatio 4</th>
+    </tr>
+    
+    <tr>
+    <td>I-ruutu</td>
+    <td>
+    <pre>
+    +..+
+    |..|
+    |..|
+    +..+
+    </pre>
+    </td>
+    <td>
+    <pre>
+    +--+
+    ....
+    ....
+    +--+
+    </pre>
+    </td>
+    <td>
+    <pre>
+    +..+
+    |..|
+    |..|
+    +..+
+    </pre>
+    </td>
+    <td>
+    <pre>
+    +--+
+    ....
+    ....
+    +--+
+    </pre>
+    </td>
+    </tr>
+    
+    <tr>
+    <td>L-ruutu</td>
+    <td>
+    <pre>
+    +..+
+    |...
+    |...
+    +--+
+    </pre>
+    </td>
+    <td>
+    <pre>
+    +--+
+    |...
+    |...
+    +..+
+    </pre>
+    </td>
+    <td>
+    <pre>
+    +--+
+    ...|
+    ...|
+    +..+
+    </pre>
+    </td>
+    <td>
+    <pre>
+    +..+
+    ...|
+    ...|
+    +--+
+    </pre>
+    </td>
+    </tr>
+
+    <tr>
+    <td>T-ruutu</td>
+    <td>
+    <pre>
+    +--+
+    ....
+    ....
+    +..+
+    </pre>
+    </td>
+    <td>
+    <pre>
+    +..+
+    ...|
+    ...|
+    +..+
+    </pre>
+    </td>
+    <td>
+    <pre>
+    +..+
+    ....
+    ....
+    +--+
+    </pre>
+    </td>
+    <td>
+    <pre>
+    +..+
+    |...
+    |...
+    +..+
+    </pre>
+    </td>
+    </tr>
+    </table>
+
+    <p>
+    Jos ruudussa on esine, piirretään esinettä kuvaava symboli jokaisen
+    ruudun keskelle jäävän 2x2-kokoisen alueen oikeaan alakulmaan.
+    Samoin jos ruudussa on pelaaja, piirretään pelaajan
+    numero keskialueen vasempaan yläkulmaan. Esimerkiksi, jos
+    L-ruudussa (ensimmäisessä rotaatiossaan) on sekä pelaaja X että b-esine,
+    on tilanne seuraava:
+    </p>
+    <div id="esimerkki-ruutu" class="objekti esimerkki"
+    title="Ruutu, jossa pelaaja ja esine">
+    <samp class="tuloste">
+    +..+
+    |X..
+    |.b.
+    +--+
+    </samp>
+    </div>
+   
+    <p>
+    Ruudussa ei voi olla samaan aikaan kahta pelaajaa tai kahta
+    esinettä.
+    </p>
+
+    <p>
+    Pelissä ruutuja on yksi enemmän kuin labyrintin koko (yksi ruutu
+    joka labyrintin kohtaan ja yksi työntöpala). Pääohjelma lisää
+    ruudut Pelirajapinnan kautta ja päättää erityyppisten ruutujen
+    määrät ja rotaatiot.
+    </p>
+
+  <h3 id="peli-tyontopala" class="numeroitu">
+   Työntöpala
+  </h3>
+  
+    <p>
+    Labyrintin lisäksi pelissä on aina yksi labyrintin ulkopuolella oleva
+    ruutu (työntöpala), jonka jokainen ihmispelaaja vuoronsa aluksi työntää
+    labyrinttiin ja samalla pudottaa labyrintistä yhden ruudun pois uudeksi
+    työntöpalaksi. Työntöruudussa ei voi olla koskaan pelaajaa, mutta siinä
+    voi muiden ruutujen tapaan olla esine.
+    </p>
+    
+    <p>
+    Ohjelmakoodissa työntöpalan tunnistaa Koordinaatti-luokan avulla.
+    Koordinaatti-olion onkoIrtopala-jäsenfunktio vastaa työntöpalalle true,
+    muille false (työntöpalan X- ja Y-koordinaatteja ei saa kysyä).
+    Koordinaatti-luokalla on oma rakentajansa työntöpalalle sopivan
+    Koordinaatti-olion luomista varten.
+    </p>
+  
+  <h3 id="peli-erikoispalat" class="numeroitu">
+   Erikoispalat
+  </h3>
+  
+    <p>
+    Lisäksi labyrintissä on erilaisia erikoispaloja, jotka aiheuttavat erilaisia 
+	toimintoja pelaajan astuessa erikoispalaan. Erikoispaloja ei piirretä karttaan
+	näkyviin, joten pelaaja ei voi tietää niiden sijaintia ennen astumistaan 
+	erikoispalaan. Erikoispalaan voi astua monta kertaa ja toiminta on aina sama.
+    Erikoispaloja ovat:
+    </p>
+    
+    <ul>
+    <li id="peli-teleportti">
+    <b>Teleportti</b>
+    
+      <p>
+      Teleportti siirtää porttiin astuneen pelaajan portille alustuksessa arvottuun kohderuutuun.
+	  
+	  Jos pelaaja astui teleporttiin kesken liikkumisen, pelaaja siirretään porttiin astuessaan
+	  ja pelaaja pysäytetään teleportin kohderuutuun. 
+	  </p>
+	  <p>
+	  Teleportti vaikuttaa samalla lailla sekä ihmis- että
+      tietokonepelaajiin. Jos teleportin kohderuutu on  teleporttiin
+      astumishetkellä työntöpalassa tai kohderuudussa on jo pelaaja, teleportilla ei ole vaikutusta (koska pelaaja
+      ei voi siirtyä työntöpalaan eikä yhdessä ruudussa voi olla kahta pelaajaa).
+      </p>
+      <p>
+		Palaan astumisesta annetaan ilmotus näyttörajapinnan kautta.
+	  </p>
+    </li>
+
+    <li id="peli-kirottu">
+    <b>Kirottu pala</b>
+    
+      <p>
+      Kirottu pala poistaa pelaajan seuraavan vuoron. Useampaan kirottuun palaan
+      astuminen vie useamman vuoron. Siunattu pala kumoaa kirotun
+      palan vaikutuksen ja kirottu pala kumoaa siunatun palan
+      vaikutuksen. Kirottuun palaan astuminen ei lopeta senhetkistä kesken
+      olevaa vuoroa. Eli pelaaja voi liikkua vaikka palan työntämisen seurauksena
+      astuisikin kirottuun palaan. 
+      </p>
+      <p>
+      Kirottuihin paloihin voi astua yhden liikkumisen aikana useita kertoja, jos niitä osuu
+      kohdalle. Tällöin niiden vaikutukset kumuloituvat eli vuoroja menetetään
+      useita (yksi siunattu pala luonnollisesti edelleen kumoaa yhden kirotun
+      palan vaikutuksen).
+      </p>
+	  
+	  <p>
+		Palaan astumisesta annetaan ilmotus näyttörajapinnan kautta.
+	  </p>
+    </li>
+
+    <li id="peli-siunattu">
+    <b>Siunattu pala</b>
+
+      <p>
+      Siunattu pala lisää pelaajalle yhden vuoron, joka suoritetaan pelaajan
+      normaalin vuoron jälkeen. Pelaaja voi astua useampaan siunattuun palaan
+      vuorolla, jolloin pelaaja suorittaa vuoronsa jälkeen astumiensa
+      siunattujen palojen verran lisävuoroja. Kirottu pala kumoaa
+      siunatun palan vaikutuksen ja siunattu pala kumoaa kirotun
+      palan vaikutuksen.
+      </p>
+      <p>
+      Siunattuihin paloihin voi astua yhden liikkumisen aikana useita kertoja, jos niitä osuu
+      kohdalle. Tällöin niiden vaikutukset kumuloituvat eli lisävuoroja saa
+      useita (yksi kirottu pala luonnollisesti edelleen kumoaa yhden siunatun
+      palan vaikutuksen).
+      </p>
+	  
+	  <p>
+		Palaan astumisesta annetaan ilmotus näyttörajapinnan kautta.
+	  </p>
+    </li>
+    </ul>
+
+  
+  <h3 id="peli-liikkuminen" class="numeroitu">
+   Liikkuminen
+  </h3>
+  
+    <p>
+    Pelaajat voivat liikkua labyrintissä yhden vuoron aikana mielivaltaisen
+    määrän vaaka- tai pystysuuntaan, mutta seinien läpi ei luonnollisesti voi
+    liikkua eikä labyrintin ulkopuolelle saa mennä. Liikkumisen aikana
+    pelaaja kerää matkan varrelta ne esineet, jotka se voi poimia.
+    Jos pelin alussa pelaaja on ruudussa, jossa on esine,
+    sitä ei poimita, ts. poimiminen tapahtuu vain uuteen ruutuun siirryttäessä.
+	Jos pelaaja siirretään toiseen ruutuun muutoin kuin oman liikkumisen aikana,
+	ei esineitä kerätä eikä erikoispaloja aktivoida.
+    <a href="#liiku">Liiku</a>-komennon yhteydessä liikkuminen dokumentoidaan
+    tarkemmin.
+    </p>
+
+ <h2 id="kulku" class="numeroitu">
+  Pelin kulku
+ </h2>
+
+  <h3 id="alustustiedosto" class="numeroitu">
+  Alustustiedosto
+  </h3>
+  
+  <p>
+  Ohjelman käyttämän alustustiedoston formaatti on yksinkertainen avainsana-parametri yhdistelmään perustuvajärjestelmä.
+  <pre>
+  Esimerkki tiedosto:
+  <code>
+	SIEMENLUKU 32
+	PELAAJIA 4
+	IHMINEN Erkki
+	IHMINEN Pertti
+	TIETOKONE DeepBlue
+	TIETOKONE K9
+  </code>
+  </pre>
+  Avain sanat:
+  <ul>
+	<li>SIEMENLUKU - Pelilaudan satunnaistamiseen käytettävä luku, optionaalinen.</li>
+	<li>PELAAJIA - Pelaajien määrä pelissä, pakollinen.</li>
+	<li>IHMINEN - Ihmispelaajan nimen määritys, nimet määräytyvät esiintymisjärjestyksessä</li>
+	<li>TIETOKONE - Tietokonepelaajan nimen määritys, nimet määräytyvät esiintymisjärjestyksessä</li>
+  </ul>
+  </p>
+
+  <h3 id="alustus" class="numeroitu">
+  Pelin alustus
+  </h3>
+
+    <p>
+    Pelin aluksi arvotaan ruuduista yksi, joka jää labyrintin
+    ulkopuolelle ensimmäiseksi työntöpalaksi. Tämän jälkeen jäljelle
+    jääneistä ruuduista sekoitetaan suorakulmion muotoinen
+    labyrintti. Käytännössä ruutujen sekoittaminen tarkoittaa, että
+    arvotaan jokaiselle ruudulle paikka labyrintista, ruudun
+    alkutilan rotaatio sekä ruuduista arvotaan ruudut, joilla on 
+	erikoistoiminnallisuutta. Tämän hoitaa pääohjelma Pelirajapinnan kautta. 
+    </p>
+
+    <p>Peliin lisätään pelaajat, jotka aloittavat labyrintin kulmista.
+    Pääohjelma lisää pelaajat peliin Pelirajapinnan kautta.
+    </p>
+
+    <p>
+    Lisäksi arvotaan missä ruudussa mikin esine
+    sijaitsee, ja kuka pelaaja etsii minkäkin esineen.
+    Tämänkin hoitaa pääohjelma Pelirajapinnan kautta.
+    </p>
+    
+    <p>
+    Alustuksen lopuksi pääohjelma kutsuu Pelirajapinnan alustusLopeta-funktiota.
+    </p>
+
+  <h3 id="vuorot" class="numeroitu">
+  Vuorot
+  </h3>
+
+  <p>
+  Peli muodostuu vuoroista. Vuoron
+  aikana ihmispelaaja ensin sijoittaa työntöpalan laudalle ja tämän
+  jälkeen halutessaan liikkuu labyrintissa. Tietokonepelaajan toiminta
+  eroaa tästä hieman ja selitään myöhemmin.
+  </p>
+  <p>
+  Kuitenkin kaikkien pelaajien tavoite on yrittää liikkua ruutuun, jossa
+  on esinelistan päälimmäinen esine. Jos pelaaja onnistuu liikkumaan
+  tällaiseen ruutuun, poistetaan ko. esine listasta ja pelaaja voi
+  lähteä etsimään seuraavaa esinettä. Jos pelaajan löytämä esine oli
+  esinelistan viimeinen, peli loppuu.
+  </p>
+
+  <h3 id="vuoron-aluksi" class="numeroitu">
+  Vuoron aluksi
+  </h3>
+  
+  <p>
+  Ohjelman toteutuksessa jokaisen vuoron alussa sekä
+  työntö-komennon antamisen jälkeen tulostetaan ruudulle pelin tilanne.
+  Esimerkiksi, jos pelaajia on yhteensä 3 ja jokaisella on etsittävänään 4
+  esinettä, voisi tulostus olla
+  </p>
+  <div id="esimerkki-vuoro" class="objekti esimerkki"
+  title="Esimerkki vuoron tulostuksesta">
+  <samp class="tuloste">
+  +..++--++..++--++..+
+  .2.|....|..||...|...
+  ..k|....|..||...|...
+  +..++--++..++..++--+
+  +--++..++..++--++..+
+  ........|..|........
+  ......c.|.b|......l.
+  +--++--++..++--++--+
+  +..++--++..++..++--+
+  .......|...|...||1..
+  ......g|..i|...||.h.
+  +--++..++--++..++..+
+  +--++..++..++..++--+
+  ...........||.......
+  ..a...j....||.......
+  +--++--++..++--++..+
+  +..++..++--++--++..+
+  |...|........0..|...
+  |...|.....f...e.|.d.
+  +--++--++--++--++--+
+
+  0: l*** (liiku o 2)
+  1: i* | hd (-)
+  2: b*** (-)
+
+  +--+ +..+ +..+ +..+
+  .... ...| .... |...
+  .... ...| .... |...
+  +..+ +..+ +--+ +..+
+  </samp>
+  </div>
+  <p>
+  Kuten esimerkkitulostuksesta huomataan, tulostus jakautuu kolmeen eri
+  osaan. Ensin tulostetaan koko labyrintti, tämän jälkeen pelaajien
+  esinelistat sekä pelaajien viimeisin toiminto ja lopuksi työntöpala
+  kaikissa eri rotaatioissaan.
+  </p>
+
+  <p>
+  Labyrintin tulostus tehdään käyttäen valmiina toteutettua näyttöoliota,
+  jota peli käyttää Nayttorajapinnan kautta. Pelin alustuksen yhteydessä
+  pääohjelma antaa pelille osoittimen näyttöolioon.
+  </p>
+
+  <p>Labyrintin tulostus tehdään siirtämällä näyttöolio labyrintin rakennustilaan
+  funktiolla komentoAloitaRakennus. Sen jälkeen palat, pelaajat ja esineet lisätään
+  labyrinttiin funktioilla palaLaudalle, pelaajaLaudalle ja esineLaudalle.
+  Myös työntöpala lisätää labyrinttiin samalla tavalla.
+  Lopuksi valmis labyrintti tulostetaan funktiolla komentoLopetaRakennus.
+  </p>
+
+  <p>
+  Pelaajan tiedot tulostetaan funktiolla tulostaPelaajanTiedot.
+  Esinelistojen tulostuksessa kerättävissä esineissä muut kuin
+  seuraavaksi haettava esine on korvattu *-merkillä. 
+  </p>
+
+  <p>
+  Pelaajan kohdalla tulostetaan myös pelaajan viimeksi
+  tekemä toiminto.
+  </p>
+  
+  <p>
+  Ihmispelaajan tapauksessa viimeisin komento on aina joko "liiku" tai "paikallaan",
+  jotka tulostetaan siinä muodossa kuin ne olisi annettu syötteenä, esim.
+  "<code>(liiku v 3)</code>".
+  </p>
+  
+  <p>
+  Tietokonepelaajalle vaihtoehtoja on
+  tietokoneen liikkumistavasta johtuen kaksi.
+  Tietokonepelaaja on edellisellä vuorollaan joko
+  pysynyt paikallaan (tulostetaaan
+  "<code>(-)</code>") tai se on liikkunut (liiku-komento kuin se
+  olisi annettu syötteenä, esim. "<code>(liiku v 3)</code>".
+  Esimerkkitilanteessa pelaaja 0 on siis viimeksi liikkunut kaksi
+  ruutua oikealle.
+  </p>
+
+  <p>
+  Pelin alussa kun pelaaja ei ole vielä tehnyt mitään toimintoa,
+  tulostetaan "<code>(-)</code>".
+  </p>
+
+  <h3 id="vuoron-toiminnot" class="numeroitu">
+  Vuoron toiminnot
+  </h3>
+  
+  <p>
+  Kuinka pelaaja toimii vuoronsa aikana riippuu siitä, onko vuorossa
+  ihmispelaaja vai tietokonepelaaja. Ihmispelaajan tapauksessa ohjelma
+  odottaa pelaajan toimintakomentoja, mutta
+  tietokonepelaajan tapauksessa ohjelma tekee toiminnot
+  automaattisesti.
+  </p>
+
+  <h4 id="ihmispelaaja" class="numeroitu">
+  Ihmispelaaja
+  </h4>
+  <p>
+  Pelaaja sijoittaa <strong>tyonna</strong>-komennolla työntöpalan laudalle.
+  Tämän jälkeen pelaaja joko liikkuu labyrintissa <strong>liiku</strong>-komennolla tai
+  pysyy paikallaan <strong>paikallaan</strong>-komennolla. Kun pelaaja on tehnyt nämä
+  toiminnot, siirtyy vuoro seuraavalle pelaajalle.
+  </p>
+  
+  <p>
+  Pääohjelma hoitaa ihmispelaajan toiminnot kysymällä komennon pelaajalta
+  ja sitten kutsumalla Pelirajapinnan funktioita komentoTyonna ja
+  komentoLiiku. Jos pelaaja pysyy paikallaan, komentoLiiku-funktiossa
+  suunta on PAIKALLAAN.
+  </p>
+  
+  <h4 id="tietokonepelaaja" class="numeroitu">
+  Tietokonepelaaja
+  </h4>
+  <p>
+  Toisin kuin ihmispelaajat tietokonepelaaja ei sijoita työntöpalaa
+  laudalle vaan yrittää suoraan siirtyä siihen ruutuun, jossa
+  tietokonepelaajan etsimä esine on. Tämä tapahtuu seuraavasti:
+  </p>
+  <ol>
+  <li>Lasketaan x- ja y-etäisyydet tavoiteruutuun.</li>
+  <li>Jos kumpikin etäisyys on nolla, eli ollaan oikeassa ruudussa,
+  poimitaan esine. <strong>(Muutettu 06.03.)</strong> Jos käy niin, että etsittävä
+  esine on työntöpalassa, pysytään paikallaan. Näissä tilanteissa vuoro päättyy tähän.</li>
+  <li>Muutoin valitaan x- ja y-suunnista se, jossa etäisyys tavoiteruutuun on
+  pidempi. Jos etäisyydet ovat samat, valitaan x-suunta.
+  Valittu suunta on tietokonepelaajan "ensisijainen suunta".</li>
+  <li>
+  Liikutaan ensisijaiseen suuntaan tavoiteruutuun asti tai mahdollisimman
+  pitkälle. Jos liikkuminen ensisijaiseen suuntaan ei ole mahdollista,
+  yritetään liikkua toiseen x- tai y-suunnista. Jos tässä suunnassa etäisyys
+  tavoiteruutuun on nolla, ei ko. suuntaan liikuta.
+  </li>
+  <li>
+  Jos kumpaankaan suuntaan ei ylläolevien sääntöjen mukaan liikuta, tietokonepelaaja
+  pysyy paikallaan.
+  </li>
+  </ol>
+  
+  <p>
+  Pääohjelma hoitaa tietokonepelaajan toiminnot kutsumalla Pelirajapinnan
+  funktiota komentoLiiku parametrilla AUTOMAATTI.
+  </p>
+
+  <h3 id="esineiden-keraaminen" class="numeroitu">
+  Esineiden kerääminen
+  </h3>
+
+  <p>Sekä ihmis- että tietokonepelaajat keräävät liikkumisensa aikana vain 
+  seuraavaksi kerättävät esineet. Jos pelaaja liikkumisensa aikana kerää esineen 
+  ja liikkumisensa aikana päätyy ruutuun, jossa on paljastuva seuraavaksi kerättävä
+  esine, myös se poimitaan. Näin hyvällä
+  onnella yhdellä liikkumisella pystyy poimimaan useita esineitä.
+  </p>
+  
+	<p>
+		Esineen keräämisestä annetaan ilmotus näyttörajapinnan kautta.
+	</p>
+  
+  <h3 id="vuoron-lopuksi" class="numeroitu">
+  Vuoron lopuksi
+  </h3>
+  
+  <p>Vuoron lopussa pääohjelma kutsuu Pelirajapinnan funktiota vaihdaVuoro.
+  Jos vuoron lopussa jonkin pelaajan kaikki esineet on kerätty (ko. pelaaja
+  voitti), palautetaan vaihdaVuoro-funktiosta paluuarvona false, muuten true.
+  </p>
+
+
+ <h2 id="komennot" class="numeroitu">
+  Komennot
+ </h2>
+
+<p>
+Ihmispelaajan vuorojen aikana ohjelma odottaa käyttäjältä komentoja,
+joiden perusteella vuorossa oleva pelaaja toimii.
+</p>
+
+<p>
+Alla on kerrottu laillisten komentojen aiheuttama toiminta. Jos
+pelaaja antaa komennon, jota ei ole listassa, annetaan virheilmoitus.
+Jos komentoa käsiteltäessä kohdataan
+virhetilanne, heitetään poikkeus Pelirajapinnan ohjeiden mukaisesti.
+</p>
+
+<h3 id="tyonna" class="numeroitu">
+työnnä
+</h3>
+
+<p>
+Pelaajan täytyy joka vuoronsa alussa sijoittaa työntöpala osaksi
+labyrinttia tietystä suunnasta. Tällöin laudan toiselta puolelta
+jää ruutu ylimääräiseksi ja tästä tulee seuraavaksi vuorossa olevan
+pelaajan työntöpala.
+</p>
+<p>
+Komennon syntaksi on <code>tyonna rotaatio suunta
+paikka</code>. Parametri <code>rotaatio</code> kertoo missä
+rotaatiossa työntöpala sijoitetaan laudalle, <code>suunta</code>
+kertoo miltä sivulta työntäminen tapahtuu ja <code>paikka</code> mille
+<code>suunta</code>-parametrin osoittaman sivun paikalle työntöpala
+sijoitetaan.
+</p>
+<p>
+Suunta- ja paikka-parametreja merkitään seuraavasti:
+<pre>
+          y
+
+      1 2 3 4 5
+    1 X X X X X 1
+    2 X X X X X 2
+v   3 X X X X X 3  o
+    4 X X X X O 4
+    5 X X X X X 5
+      1 2 3 4 5
+
+          a
+</pre>
+missä X-merkit sekä O-merkki kuvaavat labyrintin ruutuja,
+sivujen luvut <code>paikka</code>-parametrin arvoja ja
+kirjaimet <code>suunta</code>-parametrin arvoja.
+</p>
+<p>
+Esimerkiksi siis komento <code>tyonna 2 o 4</code> tarkoittaisi, että
+työntöpalana oleva ruutu sijoitetaan toisessa konfiguraatiossaan oikean sivun
+paikkaan 4. Tätä paikkaa on merkitty kuvassa O-kirjaimella.
+</p>
+<p>
+Parametreilla on seuraavat rajoitteet:
+</p>
+<ul>
+<li id="tyonna_rotaatio">Parametrin <code>rotaatio</code> täytyy olla luku välillä 1-4.</li>
+<li id="tyonna_suunta">Parametrin <code>suunta</code> täytyy olla kirjain v, y, o tai a.</li>
+<li id="tyonna_paikka">Parametrin <code>paikka</code> täytyy olla luku välillä 1-x, missä x on labyrintin koko ko. suuntaan.</li>
+</ul>
+<p id="tyonna_tehty_jo">
+Lisäksi vastaan voi tulla tilanne, jolloin käyttäjä on jo vuoronsa
+aikana tehnyt työntötoimenpiteen ja antaa silti komennon
+työnnä. Tällöin annetaan käyttäjälle virheilmoitus.
+</p>
+<p>
+Työntöpalan laudalle sijoittamisen ideana on siirtää muita laudalla
+olevia ruutuja työntösuunnassa eteenpäin. Tällöin työntösuunnassa
+kauimmaisin ruutu tippuu pois labyrintista ja tätä ruutua käytetään seuraavalla
+kierroksella työntöpalana. Esimerkiksi jos työntöpala työnnetään
+jollekin riville oikealta, niin työntöpalasta
+tulee uuden labyrintin kyseisen rivin oikeanpuolimmaisin ruutu. Entinen oikean
+reunan ruutu siirtyy yhdellä vasemmalle jne.
+Lopulta rivin entisestä vasemmanpuolimmaisesta ruudusta tehdään seuraavan
+kierroksen työntöpala.
+</p>
+<p>
+Jos ruudussa, joka työnnettiin pois laudalta, on pelaaja, täytyy tämä
+pelaaja sijoittaa takaisin laudalle. Tällaisessa tapauksessa pelaaja
+sijoitetaan aina sille ruudulle, joka toimi työntöpalana, eli pelaaja
+pyörähtää työntösuunnassa laudan toiselle puolelle. Ruuduissa oleville
+esineille ei tehdä mitään. Eli pelin alussa esineet arvotaan tietyille
+ruuduille ja ne pysyvät näissä ruuduissa koko pelin ajan. Jos siis
+sellainen ruutu, jossa on esine, siirtyy pois labyrintista
+työntöpalaksi, seuraa esine palan mukana.
+</p>
+
+<p>
+	Jos pelaaja työnnettiin ulos laudalta ja sen seuraksena siirretään ruutuun, 
+	jossa on esine tai erikoispala, ei esinettä poimita eikä erikoispalan 
+	toiminnallisuutta toteuteta. 
+</p>
+
+<h3 id="liiku" class="numeroitu">
+liiku
+</h3>
+<p>
+Sijoitettuaan työntöpalan laudalle pelaaja voi joko liikkua
+labyrintissa tai pysyä paikallaan. Liikkuminen tapahtuu komennolla
+<code>liiku suunta määrä</code>, joka ottaa parametreinaan liikkumisen suunnan
+(v[=vasemmalle], y[=ylös], o[=oikealle] tai a[=alas]) ja sen, kuinka monta ruutua
+liikutaan.
+</p>
+
+<p>
+Pelaajan liikkumista labyrintissa on rajoitettu seuraavasti
+</p>
+<ul>
+<li>Seinien läpi ei voi kulkea.</li>
+<li>Pelaaja ei saa pysähtyä ruutuun, jossa on jo toinen
+pelaaja. (Sellaisen ruudun, jossa on pelaaja, läpi saa kulkea.)</li>
+<li>Pelaaja saa liikkua yhdellä kierroksella vain kerran.</li>
+</ul>
+
+<p id="liiku_parametrit">
+Parametrina annettu ruutu tarkastetaan seuraavien virhetilanteiden varalta:
+</p>
+<ul>
+<li id="liiku_jo_pelaaja">Päämääräruudussa on jo pelaaja.</li>
+<li id="seina_vastassa">Liikkumislinjalla on seinä.</li>
+<li id="vaara_maara">Joko <code>suunta</code>-parametri ei ole jokin kirjaimista
+v, y, o tai a, tai <code>määrä</code>-parametri ei
+ole vähintään 1, tai pelaaja joutuisi labyrintin ulkopuolelle.</li>
+</ul>
+<p id="liiku_tyonto">
+Lisäksi pitää varautua tilanteeseen, jossa pelaaja ei ole vielä
+sijoittanut vuorollaan työntöpalaa laudalle. Tällaisessa tilanteessa
+annetaan virheilmoitus.
+</p>
+
+<h3 id="paikallaan" class="numeroitu">
+paikallaan
+</h3>
+<p>
+Sijoitettuaan työntöpalan laudalle pelaaja voi joko liikkua
+labyrintissa tai pysyä paikallaan. Paikallaan pysyminen tapahtuu komennolla
+<code>paikallaan</code>, joka ei ota parametreja.
+</p>
+<p>
+Pelaajan annettua <code>paikallaan</code>-komennon hänen vuoronsa
+loppuu. Mikäli pelaaja yrittää antaa <code>paikallaan</code>-komennon
+ennen kuin hän on sijoittanut työntöpalan labyrinttiin, annetaan
+käyttäjälle virheilmoitus.
+</p>
+
+<h3 id="lopeta" class="numeroitu">
+lopeta
+</h3>
+<p>
+Komento <code>lopeta</code> lopetaa ohjelman suorituksen.
+</p>
+
+<h2 id="vapaaehtoiset" class="numeroitu">
+	Työn vapaaehtoiset osat
+</h2>
+	<p>
+		Kaikkea osia harjoitustyöstä ei ole pakko toteuttaa, vaan tärkeämpää oli saada koko järjestelmä toimimaan suunnitelman tasolla. Vapaaehtoisesti toteutettavat osat ovat:
+		<ul>
+			<li>Erikoispaloista on pakko toteuttaa vain yksi, loput vapaaehtoisia. Toteutettavan erikoispalan saa vapaasti valita.</li>
+			<li>Tietokonepelaajaa ei ole pakko toteuttaa.</li>
+		</ul>
+		Vapaaehtoisten ominaisuuksien toteuttamisesta voi saada bonusta. Tärkeintä on kuitenkin tehdä pakolliset osat (eli kaikki muu kuin vapaaehtoiset) valmiiksi ennen vapaaehtoisten osien toteuttamista. Harjoitustyöstä voi saada parhaan arvosanan, vaikka mitään vapaaehtoisia osia ei olisikaan toteutettu.		
+	</p>
+	<p>
+		Toteuttamattomista ominaisuuksista pitää heittää <code>ToteuttamatonVirhe</code>-poikkeus ja toteuttamattomat ominaisuudet pitää dokumentoida palautusdokumenttiin. 
+	</p>
+<h2 id="debug" class="numeroitu">
+  Debug-toiminto
+ </h2>
+
+  <p>
+   Kun ohjelmalle annetaan parametri <kbd>-d</kbd>, tulostetaan
+   ohjelman ajon aikana sen toimintaa selventäviä debug-tulosteita.
+   Debug-tulosteet on tarkoitettu helpottamaan oman ohjelman
+   toteuttamista ja testaamista.
+   Tulosteiden muotoilu, järjestys ja niiden esittämä tieto on täysin
+   ryhmän itsensä päätettävissä.
+   Debug-tulosteet tulostetaan
+   <a href="dokumentaatio/html/debug_8hh.html"><span class="tiedostonimi">julkinen/debug.hh</span></a>-tiedostosta
+   löytyvän makron avulla.
+   Kyseinen makro tulostaa asioita ruudulle vain silloin, jos
+   debug-optio on annettu ohjelmaa käynnistettäessä.
+   Muussa makron käyttäminen ei tee mitään.
+  </p>
+
+  <p>
+   Debug-tila vaikuttaa myös poikkeusten käsittelyyn pääohjelmassa.
+   Normaalitilassa pääohjelma nappaa poikkeukset ja tulostaa niihin
+   liittyvät viestit päättäen ohjelman paluuarvoon
+   <var>EXIT_FAILURE</var>.
+   Poikkeusten nappaaminen kuitenkin kadottaa poikkeukseen liittyvät
+   pinolistaustiedot, vaikka poikkeuksen heittäisi uudelleen.
+   Tästä syystä debug-tilassa poikkeuksia ei käsitellä, jotta ne voi
+   tarvittaessa napata debuggerilla ja saada niihin liittyvän
+   pinolistauksen.
+  </p>
+
+  <h2 id="debug_naytto" class="numeroitu">Ohjelman tilan tulostus</h2>
+  <p>
+	Kun ohjelmalle annetaan parametri <kbd>-n</kbd>, tulostetaan 
+	jokaisen pelilaudan tulostuksen alussa kaikki pelissä olevat pelaajat, esineet ja erikoispalat
+	listana, joka sisältää koordinaatit. Esimerkki ohjelman tekemästä tulostuksesta löytyy tiedostosta
+	<a href="esimerkkiajot/90-nayton-debug.tst.out">julkinen/esimerkkiajot/90-nayton-debug.tst.out</a>
+  </p>
+ <h2 id="esimerkkiajo" class="numeroitu">
+  Esimerkkiajo
+ </h2>
+
+  <p>
+   Esimerkki pelin pelaamisesta löytyy tiedostostosta
+   <a href="esimerkkiajot/99-esimerkkiajo.tst.out">julkinen/esimerkkiajot/99-esimerkkiajo.tst.out</a>.
+   </p>
+   
+   <p>Esimerkkiajo on tuotettu alustustiedostolla <a href="esimerkkiajot/99-esimerkkiajo.tst">julkinen/esimerkkiajot/99-esimerkkiajo.tst</a> ja syötteellä
+   <a href="esimerkkiajot/99-esimerkkiajo.tst.in">julkinen/esimerkkiajot/99-esimerkkiajo.tst.in</a>
+  </p>
+
+  <p>
+   Esimerkkiajoa voi käyttää yhtenä oman ohjelmansa testitapauksista.
+   Seuraava komento ajaa esimerkkiajon ja ottaa tulostuksen talteen tiedostoon.
+   Komentoa voi käyttää soveltaen omien testitapausten ajamiseen.
+   Kannattaa erityisesti muistaa ohjata ohjelman tuottama tulostus jonnekin
+   muualle kuin referenssitulosteen päälle!
+   Eroja tulostuksen välillä voi sitten etsiä esim. diff-komennolla.
+  </p>
+
+  <div class="objekti esimerkki" title="Testitapauksen ajaminen.">
+   <samp class="tuloste">proffa$ <kbd>./labyrinttipeli julkinen/testit/99-esimerkkiajo.tst &lt;<span class="tiedostonimi">julkinen/testit/99-esimerkkiajo.tst.in</span> &gt;<span class="tiedostonimi">99-esimerkkiajo.tst.out</span></kbd></samp>
+  </div>
+
+<!--  <p>
+   Debug-tilan esittelemiseksi esimerkkiajosta on myös versio, jossa ohjelma
+   on ajettu debug-tilassa.
+   Kyseessä <em>ei ole</em> mikään virallinen totuus siitä, mitä täytyy
+   tulostaa ja miten, vaan suppea esimerkki kyseisen ominaisuuden
+   mahdollisuuksista.
+   Esimerkkiajo on tiedostossa
+   <a href="julkinen/esimerkkiajo-debug.txt"><span class="tiedostonimi">julkinen/esimerkkiajo-debug.txt</span></a>.
+   Ohjelma on ajettu seuraavalla komennolla:
+  </p>
+
+  <div class="objekti esimerkki" title="Ohjelman suorittaminen debug-tilassa.">
+   <samp class="tuloste">proffa$ <kbd>./moropoli -d -s 12765 -t julkinen/esimerkki.txt</kbd></samp>
+  </div>-->
+ </body>
+</html>

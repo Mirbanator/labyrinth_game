@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\include">
+      <UniqueIdentifier>{0eeba714-9858-4dd4-8867-ac64e0f1c1a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\new">
+      <UniqueIdentifier>{953c2f32-9051-458d-890e-cbf9c83beca1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\new">
+      <UniqueIdentifier>{79404899-0293-41fd-b691-32095afbe490}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="valmiiden_toteutus\Alustaja.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\alustusvirhe.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\Bittikartta.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\esiehtovirhe.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\hyodykkeet.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\invarianttivirhe.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\jalkiehtovirhe.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\komentotulkki.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\komentovirhe.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\koordinaatti.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\labyrintti.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\logiikkavirhe.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\naytto.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\nayttovirhe.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\rakentaja.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\toimintovirhe.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\toteuttamaton_virhe.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\vaittama.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\vaittamavirhe.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="valmiiden_toteutus\virhe.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pelitehdas.cpp">
+      <Filter>Source Files\new</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\new</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\new</Filter>
+    </ClCompile>
+    <ClCompile Include="Piece.cpp">
+      <Filter>Source Files\new</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerActionStatus.cpp">
+      <Filter>Source Files\new</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="valmiiden_toteutus\hyodykkeet.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="alustusvirhe.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="debug.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="komentovirhe.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="koordinaatti.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="logiikkavirhe.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="luettelotyypit.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nayttorajapinta.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nayttovirhe.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pelirajapinta.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pelitehdas.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="toimintovirhe.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="toteuttamaton_virhe.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vaittama.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="virhe.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="valmiiden_toteutus\include\Alustaja.hh">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="valmiiden_toteutus\include\Bittikartta.hh">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="valmiiden_toteutus\include\esiehtovirhe.hh">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="valmiiden_toteutus\include\include.hh">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="valmiiden_toteutus\include\invarianttivirhe.hh">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="valmiiden_toteutus\include\jalkiehtovirhe.hh">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="valmiiden_toteutus\include\komentotulkki.hh">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="valmiiden_toteutus\include\naytto.hh">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="valmiiden_toteutus\include\rakentaja.hh">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="valmiiden_toteutus\include\vaittamavirhe.hh">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\new</Filter>
+    </ClInclude>
+    <ClInclude Include="Piece.h">
+      <Filter>Header Files\new</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\new</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerActionStatus.h">
+      <Filter>Header Files\new</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="testit\00-virheellinen.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\01-alkutila.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\01-alkutila.tst.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\01-alkutila.tst.out">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\02-tyontojaliike.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\02-tyontojaliike.tst.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\02-tyontojaliike.tst.out">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\03-poimiminen.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\03-poimiminen.tst.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\03-poimiminen.tst.out">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\04-kirottu.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\04-kirottu.tst.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\04-kirottu.tst.out">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\05-siunattu.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\05-siunattu.tst.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\05-siunattu.tst.out">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\06-teleportti.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\06-teleportti.tst.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\06-teleportti.tst.out">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\07-tietokone.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\07-tietokone.tst.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\07-tietokone.tst.out">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\raakile.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\raakile.tst.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="testit\raakile.tst.out">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="esimerkkiajot\90-nayton-debug.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="esimerkkiajot\90-nayton-debug.tst.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="esimerkkiajot\90-nayton-debug.tst.out">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="esimerkkiajot\99-esimerkkiajo.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="esimerkkiajot\99-esimerkkiajo.tst.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="esimerkkiajot\99-esimerkkiajo.tst.out">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="alustustiedosto.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

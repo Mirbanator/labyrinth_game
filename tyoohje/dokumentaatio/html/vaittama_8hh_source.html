@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Olio-ohjelmointi jatkokurssi: Labyrinttipeli: vaittama.hh lähdekooditiedosto</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Olio-ohjelmointi jatkokurssi: Labyrinttipeli
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generoinut Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Etsi');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Etsi');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">vaittama.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="vaittama_8hh.html">Siirry tämän tiedoston dokumentaatioon.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef JULKINEN_VAITTAMA_HH</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define JULKINEN_VAITTAMA_HH</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="namespace_julkinen.html">Julkinen</a></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespace_julkinen.html#a2a2bfc4f2a56fb3f3fa143103534a14f">   19</a></span>&#160;    <span class="keyword">enum</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="namespace_julkinen.html#a2a2bfc4f2a56fb3f3fa143103534a14f">VaittamaTyyppi</a></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        INVARIANTTIVAITTAMA,</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        ESIEHTOVAITTAMA,</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        JALKIEHTOVAITTAMA</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    };</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span></div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="namespace_julkinen.html#ad6f59e70f19f914c38369d67c20a0ea5">vaittamaToteutus</a>(</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <a class="code" href="namespace_julkinen.html#a2a2bfc4f2a56fb3f3fa143103534a14f">VaittamaTyyppi</a> tyyppi,</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordtype">bool</span> vaite,</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordtype">char</span> <span class="keyword">const</span>* lauseke,</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordtype">char</span> <span class="keyword">const</span>* tiedosto,</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> rivi,</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordtype">char</span> <span class="keyword">const</span>* funktio</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;          );</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#ifdef NDEBUG</span></div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#  define INVARIANTTI(lauseke)  // Tyhjä.</span></div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#  define ESIEHTO(lauseke)      // Tyhjä.</span></div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#  define JALKIEHTO(lauseke)    // Tyhjä.</span></div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#else</span></div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="vaittama_8hh.html#aca200a395da96d0bbd60be9d5771ef1e">   73</a></span>&#160;<span class="preprocessor">#  define VAITTAMA(tyyppi, lauseke)                                     \</span></div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">    Julkinen::vaittamaToteutus(tyyppi, lauseke, #lauseke,               \</span></div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">            __FILE__, __LINE__, VAITTAMAFUNKTIO)</span></div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div><div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="vaittama_8hh.html#a5a361c6345d4a33ff4ebdce0a70492b1">   83</a></span>&#160;<span class="preprocessor">#  define INVARIANTTI(lauseke)                                          \</span></div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">    VAITTAMA(Julkinen::INVARIANTTIVAITTAMA, lauseke)</span></div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div><div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="vaittama_8hh.html#a58d4eec46b34c43ac24ca842e5f98916">   92</a></span>&#160;<span class="preprocessor">#  define ESIEHTO(lauseke)                                              \</span></div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">    VAITTAMA(Julkinen::ESIEHTOVAITTAMA, lauseke)</span></div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="vaittama_8hh.html#ad3e18f898f347f23d2b6f271e8258df1">  101</a></span>&#160;<span class="preprocessor">#  define JALKIEHTO(lauseke)                                            \</span></div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">    VAITTAMA(Julkinen::JALKIEHTOVAITTAMA, lauseke)</span></div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">// GNU assert.h:ta mukaillen</span></div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#  if defined(__GNUG__)</span></div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#    define VAITTAMAFUNKTIO __PRETTY_FUNCTION__</span></div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#  else</span></div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div><div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="vaittama_8hh.html#ab33be5ce915422889f1084ad272c1171">  114</a></span>&#160;<span class="preprocessor">#    define VAITTAMAFUNKTIO (0)</span></div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#  endif</span></div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif</span></div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif  // JULKINEN_VAITTAMA_HH</span></div><div class="ttc" id="namespace_julkinen_html_ad6f59e70f19f914c38369d67c20a0ea5"><div class="ttname"><a href="namespace_julkinen.html#ad6f59e70f19f914c38369d67c20a0ea5">Julkinen::vaittamaToteutus</a></div><div class="ttdeci">void vaittamaToteutus(VaittamaTyyppi tyyppi, bool vaite, char const *lauseke, char const *tiedosto, unsigned int rivi, char const *funktio)</div><div class="ttdoc">Väittämien tarkistamiseen käytettävä funktio. </div></div>
+<div class="ttc" id="namespace_julkinen_html_a2a2bfc4f2a56fb3f3fa143103534a14f"><div class="ttname"><a href="namespace_julkinen.html#a2a2bfc4f2a56fb3f3fa143103534a14f">Julkinen::VaittamaTyyppi</a></div><div class="ttdeci">VaittamaTyyppi</div><div class="ttdoc">Luettelotyyppi julkisenrajpinnan assertioille. </div><div class="ttdef"><b>Definition:</b> vaittama.hh:19</div></div>
+<div class="ttc" id="namespace_julkinen_html"><div class="ttname"><a href="namespace_julkinen.html">Julkinen</a></div><div class="ttdoc">Nimiavaruus harjoitustyön valmiina annetulle koodille. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generoinut projektille Olio-ohjelmointi jatkokurssi: Labyrinttipeli Sun Nov 5 2017 21:40:26  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

@@ -1,0 +1,51 @@
+Pelaaja: 0 sijainti: x: 1 y: 1
+Pelaaja: 1 sijainti: x: 1 y: 5
+Pelaaja: 2 sijainti: x: 5 y: 1
+Pelaaja: 3 sijainti: x: 5 y: 5
+Esine: j sijainti: x: 1 y: 1
+Esine: d sijainti: x: 2 y: 1
+Esine: b sijainti: x: 3 y: 1
+Esine: k sijainti: x: 4 y: 1
+Esine: i sijainti: x: 5 y: 1
+Esine: g sijainti: x: 1 y: 2
+Esine: f sijainti: x: 4 y: 2
+Esine: l sijainti: x: 4 y: 3
+Esine: e sijainti: x: 1 y: 4
+Esine: h sijainti: x: 3 y: 4
+Esine: c sijainti: x: 4 y: 4
+Esine: a sijainti: x: 5 y: 4
+Erikoispala: kirottu sijainti: x: 2 y: 1
+Erikoispala: teleportti Kohde x: 2 y: 1 sijainti: x: 5 y: 1
+Erikoispala: teleportti Kohde x: 3 y: 1 sijainti: x: 2 y: 2
+Erikoispala: teleportti Kohde x: 1 y: 3 sijainti: x: 4 y: 5
++..++..++--++..++--+     
+|0..|..|....|....2..     
+|.j.|.d|..b.|.k...i.     
++--++..++..++..++..+     
++--++..++--++..++..+     
+....|..........|...|     
+..g.|.........f|...|     
++..++..++..++..++--+     
++..++..++..++--++..+     
+...|...|...||...|..|     
+...|...|...||.l.|..|     
++..++--++--++..++..+     
++..++--++..++--++..+     
+|..|.......|.......|     
+|.e|......h|..c...a|     
++..++--++--++--++--+     
++--++--++..++..++--+     
+|1......|..||....3..     
+|.......|..||.......     
++..++--++..++..++--+     
+                          
+0 Erkki: j** |  (-)
+1 Pertti: k** |  (-)
+2 DeepBlue: b** |  (-)
+3 K9: f** |  (-)
+                          
++..+ +--+ +--+ +..+      
+|... |... ...| ...|      
+|... |... ...| ...|      
++--+ +..+ +..+ +--+      
+0 Erkki>lopeta

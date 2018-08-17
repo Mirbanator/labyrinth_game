@@ -1,0 +1,198 @@
+body
+{
+    counter-reset: alaalaluku alaluku luku muotosaanto esimerkki kaava tuloste virhe;
+}
+
+dl
+{
+    margin-left: 2em;
+}
+
+.objekti
+{
+    margin: 2em;
+    padding: 1ex;
+    border: 1px solid #000000;
+}
+
+.koodi
+{
+    white-space: pre;
+    display: block;
+    background-color: #e0e0e0;
+    color: #000000;
+    padding 1ex;
+}
+
+.tiedostonimi
+{
+    font-style: italic;
+}
+
+.tuloste
+{
+    white-space: pre;
+    display: block;
+    background-color: #e0e0e0;
+    color: #000000;
+    padding: 1ex;
+}
+
+.tuloste.virhe
+{
+/*
+    color: #f0c0c0;
+ */
+}
+
+.tuloste.virhe:before
+{
+    content: "VIRHE: ";
+}
+
+.objekti:before
+{
+    display: block;
+    background-color: white;
+    color: black;
+}
+
+.objekti.virhe
+{
+    border: 1px solid #ff0000;
+}
+
+.kaava:before
+{
+    content: "Kaava " counter(luku) "." counter(kaava) ": "
+            attr(title) "\A \A";
+    counter-increment: kaava;
+}
+
+.muotosaanto:before
+{
+    content: "Muotosääntö " counter(luku) "." counter(muotosaanto) ": "
+            attr(title);
+    counter-increment: muotosaanto;
+}
+
+.tulostemuoto:before
+{
+    content: "Tulostemuoto " counter(luku) "." counter(tuloste) ": "
+            attr(title);
+    counter-increment: tuloste;
+}
+
+.tulostemuoto.virhe:before
+{
+    content: "Virheilmoitus " counter(luku) "." counter(virhe) ": "
+            attr(title);
+    counter-increment: virhe;
+}
+
+.esimerkki:before
+{
+    content: "Esimerkki " counter(luku) "." counter(esimerkki) ": "
+            attr(title);
+    counter-increment: esimerkki;
+}
+
+h2.numeroitu
+{
+    border-bottom: 1px solid black;
+    counter-reset: alaalaluku alaluku esimerkki muotosaanto kaava tuloste virhe;
+}
+
+h2.numeroitu:before
+{
+    content: counter(luku) " ";
+    counter-increment: luku;
+}
+
+h3.numeroitu
+{
+    counter-reset: alaalaluku;
+}
+
+h3.numeroitu:before
+{
+    content: counter(luku) "." counter(alaluku) " ";
+    counter-increment: alaluku;
+}
+
+h4.numeroitu:before
+{
+    content: counter(luku) "." counter(alaluku) "." counter(alaalaluku) " ";
+    counter-increment: alaalaluku;
+}
+
+kbd
+{
+    font-style: italic;
+}
+
+ol.toc
+{
+    counter-reset: item;
+}
+
+ol.toc > li
+{
+    display: block;
+}
+
+ol.toc > li:before
+{
+    content: counters(item, ".") " ";
+    counter-increment: item;
+}
+
+.valinnainen:before
+{
+    content: "[";
+}
+
+.valinnainen:after
+{
+    content: "]";
+}
+
+.vaihtoehtoiset:before
+{
+    content: "(";
+}
+
+.vaihtoehtoiset:after
+{
+    content: ")";
+}
+
+.vaihtoehto:first-child:before
+{
+    content: none;
+}
+
+.vaihtoehto:before
+{
+    content: "|";
+}
+
+.ohjelmannimi
+{
+    font-style: italic;
+}
+
+.toistettava:after
+{
+    content: "\2026";
+}
+
+.huomio
+{
+    margin-left: 3em;
+    margin-right: 3em;
+    border: 1px solid black;
+    font-size: 150%;
+    color: red;
+    padding: 0.5em;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Olio-ohjelmointi jatkokurssi: Labyrinttipeli: logiikkavirhe.hh lähdekooditiedosto</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Olio-ohjelmointi jatkokurssi: Labyrinttipeli
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generoinut Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Etsi');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Etsi');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">logiikkavirhe.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="logiikkavirhe_8hh.html">Siirry tämän tiedoston dokumentaatioon.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef JULKINEN_LOGIIKKAVIRHE_HH</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define JULKINEN_LOGIIKKAVIRHE_HH</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="virhe_8hh.html">virhe.hh</a>&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_julkinen.html">Julkinen</a></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_julkinen_1_1_logiikkavirhe.html">   20</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_julkinen_1_1_logiikkavirhe.html">Logiikkavirhe</a> : <span class="keyword">public</span> <a class="code" href="class_julkinen_1_1_virhe.html">Virhe</a></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                <span class="keyword">public</span>:</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_julkinen_1_1_logiikkavirhe.html#afbf716c9c72439df3d8638576942d14d">   28</a></span>&#160;            <span class="keyword">enum</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="class_julkinen_1_1_logiikkavirhe.html#afbf716c9c72439df3d8638576942d14d">Virhekoodi</a></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            {</div><div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_julkinen_1_1_logiikkavirhe.html#afbf716c9c72439df3d8638576942d14da327478ab895f92a6e547db21b050ab8f">   34</a></span>&#160;                <a class="code" href="class_julkinen_1_1_logiikkavirhe.html#afbf716c9c72439df3d8638576942d14da327478ab895f92a6e547db21b050ab8f">VIRHE_TUNNISTAMATON</a></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            };</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        </div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                        <span class="keyword">explicit</span> <a class="code" href="class_julkinen_1_1_logiikkavirhe.html#a6bf569c03b73db31936542f7967fc217">Logiikkavirhe</a>(std::string <span class="keyword">const</span>&amp; virheviesti);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        </div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        <span class="keyword">explicit</span> <a class="code" href="class_julkinen_1_1_logiikkavirhe.html#a6bf569c03b73db31936542f7967fc217">Logiikkavirhe</a>(<a class="code" href="class_julkinen_1_1_logiikkavirhe.html#afbf716c9c72439df3d8638576942d14d">Virhekoodi</a> virhekoodi);</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                        </div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="class_julkinen_1_1_logiikkavirhe.html#a6bf569c03b73db31936542f7967fc217">Logiikkavirhe</a>(<a class="code" href="class_julkinen_1_1_logiikkavirhe.html">Logiikkavirhe</a> <span class="keyword">const</span>&amp; toinen);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        </div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <a class="code" href="class_julkinen_1_1_logiikkavirhe.html">Logiikkavirhe</a>&amp; <a class="code" href="class_julkinen_1_1_logiikkavirhe.html#aafc89f453d7fa52175420d52426e9c3d">operator=</a>(<a class="code" href="class_julkinen_1_1_logiikkavirhe.html">Logiikkavirhe</a> <span class="keyword">const</span>&amp; toinen);</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        <a class="code" href="class_julkinen_1_1_logiikkavirhe.html#afbf716c9c72439df3d8638576942d14d">Virhekoodi</a> <a class="code" href="class_julkinen_1_1_logiikkavirhe.html#a94949c0a8c70fdb7d1b5e5e606dcddc8">virhe</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        </div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        </div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keyword">virtual</span></div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            std::basic_ostream&lt;char&gt;&amp;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <a class="code" href="class_julkinen_1_1_logiikkavirhe.html#a0efcebc5dcb1a08118ca8438e2aec3fd">tulosta</a>(std::basic_ostream&lt;char&gt;&amp; tuloste)</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keyword">const</span>;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keyword">private</span>:</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <a class="code" href="class_julkinen_1_1_logiikkavirhe.html#afbf716c9c72439df3d8638576942d14d">Virhekoodi</a> virhe_;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                </div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        };</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        </div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif // JULKINEN_Logiikkavirhe_HH</span></div><div class="ttc" id="class_julkinen_1_1_logiikkavirhe_html_a94949c0a8c70fdb7d1b5e5e606dcddc8"><div class="ttname"><a href="class_julkinen_1_1_logiikkavirhe.html#a94949c0a8c70fdb7d1b5e5e606dcddc8">Julkinen::Logiikkavirhe::virhe</a></div><div class="ttdeci">Virhekoodi virhe() const</div><div class="ttdoc">Sattuneen virhetilanteen virhekoodi. </div></div>
+<div class="ttc" id="class_julkinen_1_1_logiikkavirhe_html_afbf716c9c72439df3d8638576942d14d"><div class="ttname"><a href="class_julkinen_1_1_logiikkavirhe.html#afbf716c9c72439df3d8638576942d14d">Julkinen::Logiikkavirhe::Virhekoodi</a></div><div class="ttdeci">Virhekoodi</div><div class="ttdoc">Tunnisteet esimääritellyille virhetilanteille käyttäjän antamissa komennoissa. </div><div class="ttdef"><b>Definition:</b> logiikkavirhe.hh:28</div></div>
+<div class="ttc" id="class_julkinen_1_1_logiikkavirhe_html_afbf716c9c72439df3d8638576942d14da327478ab895f92a6e547db21b050ab8f"><div class="ttname"><a href="class_julkinen_1_1_logiikkavirhe.html#afbf716c9c72439df3d8638576942d14da327478ab895f92a6e547db21b050ab8f">Julkinen::Logiikkavirhe::VIRHE_TUNNISTAMATON</a></div><div class="ttdoc">Tunnistamaton virhe. </div><div class="ttdef"><b>Definition:</b> logiikkavirhe.hh:34</div></div>
+<div class="ttc" id="virhe_8hh_html"><div class="ttname"><a href="virhe_8hh.html">virhe.hh</a></div><div class="ttdoc">Virhe-luokan esittely. </div></div>
+<div class="ttc" id="class_julkinen_1_1_logiikkavirhe_html_a6bf569c03b73db31936542f7967fc217"><div class="ttname"><a href="class_julkinen_1_1_logiikkavirhe.html#a6bf569c03b73db31936542f7967fc217">Julkinen::Logiikkavirhe::Logiikkavirhe</a></div><div class="ttdeci">Logiikkavirhe(std::string const &amp;virheviesti)</div><div class="ttdoc">Tunnistamaton virhetilanne kopioidulla viestillä. </div></div>
+<div class="ttc" id="class_julkinen_1_1_virhe_html"><div class="ttname"><a href="class_julkinen_1_1_virhe.html">Julkinen::Virhe</a></div><div class="ttdoc">Labyrintin poikkeusten kantaluokka. </div><div class="ttdef"><b>Definition:</b> virhe.hh:56</div></div>
+<div class="ttc" id="class_julkinen_1_1_logiikkavirhe_html"><div class="ttname"><a href="class_julkinen_1_1_logiikkavirhe.html">Julkinen::Logiikkavirhe</a></div><div class="ttdoc">Virhe toimintalogiikka virhetilanteita varten. </div><div class="ttdef"><b>Definition:</b> logiikkavirhe.hh:20</div></div>
+<div class="ttc" id="class_julkinen_1_1_logiikkavirhe_html_a0efcebc5dcb1a08118ca8438e2aec3fd"><div class="ttname"><a href="class_julkinen_1_1_logiikkavirhe.html#a0efcebc5dcb1a08118ca8438e2aec3fd">Julkinen::Logiikkavirhe::tulosta</a></div><div class="ttdeci">virtual std::basic_ostream&lt; char &gt; &amp; tulosta(std::basic_ostream&lt; char &gt; &amp;tuloste) const</div><div class="ttdoc">Tulosta virheen viesti virtaan. </div></div>
+<div class="ttc" id="namespace_julkinen_html"><div class="ttname"><a href="namespace_julkinen.html">Julkinen</a></div><div class="ttdoc">Nimiavaruus harjoitustyön valmiina annetulle koodille. </div></div>
+<div class="ttc" id="class_julkinen_1_1_logiikkavirhe_html_aafc89f453d7fa52175420d52426e9c3d"><div class="ttname"><a href="class_julkinen_1_1_logiikkavirhe.html#aafc89f453d7fa52175420d52426e9c3d">Julkinen::Logiikkavirhe::operator=</a></div><div class="ttdeci">Logiikkavirhe &amp; operator=(Logiikkavirhe const &amp;toinen)</div><div class="ttdoc">Sijoitusoperaattori. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generoinut projektille Olio-ohjelmointi jatkokurssi: Labyrinttipeli Sun Nov 5 2017 21:40:25  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
